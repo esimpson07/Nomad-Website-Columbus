@@ -99,7 +99,7 @@
         
         /* Hero Section */
         .hero {
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://source.unsplash.com/random/1600x900/?art,festival');
+            background: url("images/banner.jpg");
             background-size: cover;
             background-position: center;
             height: 70vh; /* Increased height */
@@ -248,7 +248,7 @@
             position: relative;
             overflow: hidden;
             border-radius: 10px;
-            height: 300px; /* Taller gallery items */
+            height: 300px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
         
@@ -300,6 +300,7 @@
             display: block;
         }
         
+        
         /* Events Calendar */
         .calendar {
             width: 100%;
@@ -348,13 +349,21 @@
             gap: 60px; /* More space between form and info */
             margin: 60px 0; /* More space around container */
         }
+
+        iframe {
+            width: 100%;
+            height: 1000px;         /* adjust depending on your form’s length */
+            border: none;
+        }
         
         .contact-form {
             flex: 1;
             background-color: white;
-            padding: 40px; /* More padding */
+            padding: 80px; /* More padding */
             border-radius: 12px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            width: auto;
+            max-height: 1282px;
         }
         
         .contact-form h3 {
@@ -667,12 +676,10 @@
             <div class="footer-col">
                 <h3>Quick Links</h3>
                 <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About Us</a></li>
-                    <li><a href="#events">Upcoming Events</a></li>
-                    <li><a href="#contact">Get Involved</a></li>
-                    <li><a href="#contact">Vendor Information</a></li>
-                    <li><a href="#contact">Performers</a></li>
+                    <li><a id="homeLink2" href="#home">Home</a></li>
+                    <li><a id="aboutLink2" href="#about">About Us</a></li>
+                    <li><a id="eventsLink2" href="#events">Upcoming Events</a></li>
+                    <li><a id="contactLink2" href="#contact">Get Involved</a></li>
                 </ul>
             </div>
             
@@ -692,18 +699,11 @@
                         <p>(614) 555-7890</p>
                     </div>
                 </div>
-                <div class="info-item">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <div class="info-item-content">
-                        <h4>Address</h4>
-                        <p>123 Creative Lane<br>Columbus, OH 43201</p>
-                    </div>
-                </div>
             </div>
         </div>
         
         <div class="copyright">
-            <p>&copy; 2023 Nomad Art Columbus. All rights reserved.</p>
+            <p>&copy; 2025 Nomad Art Columbus. All rights reserved.</p>
         </div>
     </footer>
 
@@ -730,16 +730,34 @@
             });
         });
 
+        function setupFooterButtons() {
+            const homeLink2 = document.getElementById("homeLink2");
+            const aboutLink2 = document.getElementById("aboutLink2");
+            const eventsLink2 = document.getElementById("eventsLink2");
+            const contactLink2 = document.getElementById("contactLink2");
+
+            homeLink2.addEventListener('click', function() {
+                loadPage("home");
+            });
+
+            aboutLink2.addEventListener('click', function() {
+                loadPage("about");
+            });
+
+            eventsLink2.addEventListener('click', function() {
+                loadPage("events");
+            });
+
+            contactLink2.addEventListener('click', function() {
+                loadPage("contact");
+            });
+        }
+
         function setupHomeButtons() {
-            const aboutButton1 = document.getElementById("aboutButton1");
             const aboutButton2 = document.getElementById("aboutButton2");
 
             const eventsButton1 = document.getElementById("eventsButton1");
             const eventsButton2 = document.getElementById("eventsButton2");
-
-            aboutButton1.addEventListener('click', function() {
-                loadPage("about")
-            });
 
             aboutButton2.addEventListener('click', function() {
                 loadPage("about")
@@ -767,6 +785,14 @@
                 loadPage("contact")
             });
         }
+
+        function setupEventButtons() {
+            const contactButton3 = document.getElementById("contactButton3");
+
+            contactButton3.addEventListener('click', function() {
+                loadPage("contact")
+            });
+        }
         
         function loadPage(page) {
             const contentDiv = document.getElementById('content');
@@ -784,7 +810,10 @@
                             <div class="hero-content">
                                 <h1>Empowering Teen Creativity</h1>
                                 <p>A teen-run platform for artists, musicians, and vendors to showcase their talents in Columbus</p>
-                                <a id="aboutButton1" class="btn">Learn More</a>
+                                <div style="margin-top: 40px;">
+                                    <a id="aboutButton2" class="btn">Our Story</a>
+                                    <a id="eventsButton1" class="btn" style="margin-left: 20px; background-color: var(--light); border-color: var(--light); color: var(--secondary);">Upcoming Events</a>
+                                </div>
                             </div>
                         </section>
                     `;
@@ -803,11 +832,6 @@
                                     <p>At Nomad, we believe that creativity shouldn't be limited by age or financial barriers. Our events provide a completely free platform for young artists, musicians, and entrepreneurs to showcase their talents, gain exposure, and connect with like-minded individuals.</p>
                                     
                                     <p>What makes Nomad truly special is that every aspect - from planning to execution - is handled by a dedicated team of teenagers. This creates an authentic space where young creatives can express themselves freely and develop valuable leadership skills.</p>
-                                    
-                                    <div style="margin-top: 40px;">
-                                        <a id="aboutButton2" class="btn">Our Story</a>
-                                        <a id="eventsButton1" class="btn" style="margin-left: 20px; background-color: transparent; border-color: var(--secondary); color: var(--secondary);">Upcoming Events</a>
-                                    </div>
                                 </div>
                                 
                                 <div class="about-image">
@@ -825,7 +849,7 @@
                             <div class="card-grid">
                                 <div class="card">
                                     <div class="card-img">
-                                        <img src="https://source.unsplash.com/random/800x500/?music,band,teen" alt="Live music">
+                                        <img src="images/live_music.jpg" alt="live_music">
                                     </div>
                                     <div class="card-content">
                                         <h3>Live Performances</h3>
@@ -837,7 +861,7 @@
                                 
                                 <div class="card">
                                     <div class="card-img">
-                                        <img src="https://source.unsplash.com/random/800x500/?art,exhibit,teen" alt="Art display">
+                                        <img src="images/art_display.jpg" alt="art_display">
                                     </div>
                                     <div class="card-content">
                                         <h3>Art Exhibitions</h3>
@@ -849,7 +873,7 @@
                                 
                                 <div class="card">
                                     <div class="card-img">
-                                        <img src="https://source.unsplash.com/random/800x500/?market,vendor,teen" alt="Vendor market">
+                                        <img src="images/vendor_market.jpg" alt="vendor_market">
                                     </div>
                                     <div class="card-content">
                                         <h3>Vendor Market</h3>
@@ -858,45 +882,6 @@
                                         <p>Many of our vendors have grown their businesses significantly through exposure at Nomad events.</p>
                                     </div>
                                 </div>
-                            </div>
-                        </section>
-                        
-                        <section class="container">
-                            <div class="section-title">
-                                <h2>Gallery</h2>
-                                <p>Memories from our past events</p>
-                            </div>
-                            
-                            <div class="gallery">
-                                <div class="gallery-item">
-                                    <img src="https://source.unsplash.com/random/800x600/?concert,teen,summer" alt="Summer festival">
-                                </div>
-                                <div class="gallery-item">
-                                    <img src="https://source.unsplash.com/random/800x600/?art,display,exhibit" alt="Art exhibition">
-                                </div>
-                                <div class="gallery-item">
-                                    <img src="https://source.unsplash.com/random/800x600/?market,teen,vendor" alt="Vendor market">
-                                </div>
-                                <div class="gallery-item">
-                                    <img src="https://source.unsplash.com/random/800x600/?crowd,concert,night" alt="Night concert">
-                                </div>
-                                <div class="gallery-item">
-                                    <img src="https://source.unsplash.com/random/800x600/?workshop,art,teen" alt="Art workshop">
-                                </div>
-                                <div class="gallery-item">
-                                    <img src="https://source.unsplash.com/random/800x600/?performance,stage,music" alt="Live performance">
-                                </div>
-                                <div class="gallery-item">
-                                    <img src="https://source.unsplash.com/random/800x600/?artist,painting,live" alt="Live painting">
-                                </div>
-                                <div class="gallery-item">
-                                    <img src="https://source.unsplash.com/random/800x600/?jewelry,craft,market" alt="Handmade crafts">
-                                </div>
-                            </div>
-                            
-                            <div style="text-align: center; margin-top: 50px;">
-                                <a id="eventsButton2" class="btn">View All Events</a>
-                                <a href="https://drive.google.com/drive/folders/1ssw8v5HgoeXblv3g_iqcwTRhd-E4t7E-" target="_blank" class="btn" style="margin-left: 20px; background-color: transparent; border-color: var(--secondary); color: var(--secondary);">Full Photo Gallery</a>
                             </div>
                         </section>
                         
@@ -929,8 +914,51 @@
                                 </div>
                             </div>
                         </section>
+
+                        <section class="container">
+                            <div class="section-title">
+                                <h2>Gallery</h2>
+                                <p>Memories from our past events</p>
+                            </div>
+                            
+                            <div class="gallery">
+                                <div class="gallery-item">
+                                    <img src="images/gallery_1.jpg" alt="gallery_1">
+                                </div>
+                                <div class="gallery-item">
+                                    <img src="images/gallery_2.jpg" alt="gallery_2">
+                                </div>
+                                <div class="gallery-item">
+                                    <img src="images/gallery_3.jpg" alt="gallery_3">
+                                </div>
+                                <div class="gallery-item">
+                                    <img src="images/gallery_4.jpg" alt="gallery_4">
+                                </div>
+                                <div class="gallery-item">
+                                    <img src="images/gallery_5.jpg" alt="gallery_5">
+                                </div>
+                                <div class="gallery-item">
+                                    <img src="images/gallery_6.jpg" alt="gallery_6">
+                                </div>
+                                <div class="gallery-item">
+                                    <img src="images/gallery_7.jpg" alt="gallery_7">
+                                </div>
+                                <div class="gallery-item">
+                                    <img src="images/gallery_8.jpg" alt="gallery_8">
+                                </div>
+                                <div class="gallery-item">
+                                    <img src="images/gallery_9.jpg" alt="gallery_9">
+                                </div>
+                            </div>
+                            
+                            <div style="text-align: center; margin-top: 50px;">
+                                <a id="eventsButton2" class="btn">View All Events</a>
+                                <a href="https://drive.google.com/drive/folders/1ssw8v5HgoeXblv3g_iqcwTRhd-E4t7E-" target="_blank" class="btn" style="margin-left: 20px; background-color: transparent; border-color: var(--secondary); color: var(--secondary);">Full Photo Gallery</a>
+                            </div>
+                        </section>
                     `;
                     setupHomeButtons();
+                    setupFooterButtons();
                     break;
                     
                 case 'about':
@@ -959,7 +987,7 @@
                                 </div>
                                 
                                 <div class="about-image">
-                                    <img src="https://source.unsplash.com/random/1000x600/?team,teenagers,meeting" alt="Our team">
+                                    <img src="images/our_team.jpg" alt="Our team">
                                 </div>
                             </div>
                         </section>
@@ -973,7 +1001,7 @@
                             <div class="card-grid">
                                 <div class="card">
                                     <div class="card-img">
-                                        <img src="https://source.unsplash.com/random/800x500/?community,teen,diverse" alt="Community">
+                                        <img src="images/principles_1.jpg" alt="principles_1">
                                     </div>
                                     <div class="card-content">
                                         <h3>Community First</h3>
@@ -985,7 +1013,7 @@
                                 
                                 <div class="card">
                                     <div class="card-img">
-                                        <img src="https://source.unsplash.com/random/800x500/?equality,teen,art" alt="Accessibility">
+                                        <img src="images/principles_2.jpg" alt="principles_2">
                                     </div>
                                     <div class="card-content">
                                         <h3>Radical Accessibility</h3>
@@ -997,7 +1025,7 @@
                                 
                                 <div class="card">
                                     <div class="card-img">
-                                        <img src="https://source.unsplash.com/random/800x500/?leadership,teen,group" alt="Leadership">
+                                        <img src="images/principles_3.jpg" alt="principles_3">
                                     </div>
                                     <div class="card-content">
                                         <h3>Youth Leadership</h3>
@@ -1017,9 +1045,6 @@
                             
                             <div class="card-grid">
                                 <div class="card">
-                                    <div class="card-img">
-                                        <img src="https://source.unsplash.com/random/800x500/?teen,portrait,girl" alt="Team member">
-                                    </div>
                                     <div class="card-content">
                                         <h3>Planning Committee</h3>
                                         <p>Our 12-person planning team meets weekly to organize all aspects of Nomad events. Members specialize in areas like artist relations, venue logistics, marketing, and volunteer coordination.</p>
@@ -1029,9 +1054,6 @@
                                 </div>
                                 
                                 <div class="card">
-                                    <div class="card-img">
-                                        <img src="https://source.unsplash.com/random/800x500/?teen,group,volunteer" alt="Volunteers">
-                                    </div>
                                     <div class="card-content">
                                         <h3>Event Volunteers</h3>
                                         <p>Each event is staffed by 30-50 teen volunteers who handle setup, operations, and cleanup. Volunteer roles include:</p>
@@ -1047,9 +1069,6 @@
                                 </div>
                                 
                                 <div class="card">
-                                    <div class="card-img">
-                                        <img src="https://source.unsplash.com/random/800x500/?mentor,teen,art" alt="Mentors">
-                                    </div>
                                     <div class="card-content">
                                         <h3>Adult Advisors</h3>
                                         <p>While Nomad is teen-run, we're grateful for support from professional artists, event planners, and community leaders who serve as optional mentors.</p>
@@ -1063,277 +1082,83 @@
                                 <a id="contactButton2" class="btn">Join Our Team</a>
                             </div>
                         </section>
-                        
-                        <section class="container" style="background-color: #f9f9f9; padding: 80px 30px;">
-                            <div class="section-title">
-                                <h2>Memories</h2>
-                                <p>Highlights from past Nomad events</p>
-                            </div>
-                            
-                            <div class="gallery">
-                                <div class="gallery-item">
-                                    <img src="https://source.unsplash.com/random/800x600/?event,music,summer" alt="Summer festival">
-                                </div>
-                                <div class="gallery-item">
-                                    <img src="https://source.unsplash.com/random/800x600/?art,show,exhibit" alt="Art show">
-                                </div>
-                                <div class="gallery-item">
-                                    <img src="https://source.unsplash.com/random/800x600/?market,teen,craft" alt="Craft market">
-                                </div>
-                                <div class="gallery-item">
-                                    <img src="https://source.unsplash.com/random/800x600/?performance,stage,night" alt="Night performance">
-                                </div>
-                                <div class="gallery-item">
-                                    <img src="https://source.unsplash.com/random/800x600/?workshop,painting,teen" alt="Art workshop">
-                                </div>
-                                <div class="gallery-item">
-                                    <img src="https://source.unsplash.com/random/800x600/?concert,crowd,energy" alt="Concert crowd">
-                                </div>
-                                <div class="gallery-item">
-                                    <img src="https://source.unsplash.com/random/800x600/?artist,sculpture,live" alt="Live sculpture">
-                                </div>
-                                <div class="gallery-item">
-                                    <img src="https://source.unsplash.com/random/800x600/?vendor,handmade,jewelry" alt="Handmade jewelry">
-                                </div>
-                            </div>
-                        </section>
                     `;
                     setupAboutButtons();
+                    setupFooterButtons();
                     break;
                     
                 case 'events':
                     contentDiv.innerHTML = `
                         <section class="container">
                             <div class="section-title">
-                                <h2>Upcoming Events</h2>
+                                <h2>Upcoming Event</h2>
                                 <p>Join us at our next gathering of young creatives</p>
                             </div>
                             
                             <div class="card-grid">
                                 <div class="card">
-                                    <div class="card-img">
-                                        <img src="https://source.unsplash.com/random/800x500/?festival,summer,teen" alt="Summer Fest">
-                                    </div>
                                     <div class="card-content">
-                                        <h3>Nomad Summer Fest</h3>
-                                        <p><strong>Date:</strong> August 10-11, 2023</p>
-                                        <p><strong>Time:</strong> 12:00 PM - 8:00 PM (both days)</p>
-                                        <p><strong>Location:</strong> Columbus Commons</p>
-                                        <p>Our biggest event of the year returns! Two full days of music, art, and vendors featuring:</p>
+                                        <h3>August Nomad</h3>
+                                        <p><strong>Date: </strong>August 16, 2025</p>
+                                        <p><strong>Time: </strong>6:00 PM - 9:00 PM</p>
+                                        <p><strong>Location :</strong>The Green Space by Viewpoint Books</p>
+                                        <p>Nomad is being hosted in downtown Columbus, featuring:</p>
                                         <ul style="margin: 15px 0 15px 20px;">
-                                            <li>35 musical performances across two stages</li>
-                                            <li>Artist alley with 50+ teen creators</li>
-                                            <li>Vendor market with 75+ small businesses</li>
-                                            <li>Interactive art installations</li>
+                                            <li>Live music from 4 seperate bands / individuals</li>
+                                            <li>Over 5 separate vendors</li>
                                             <li>Food trucks and refreshments</li>
                                         </ul>
                                         <p>Free admission all weekend. Vendor and performer applications open until July 1.</p>
                                         <div style="margin-top: 25px;">
-                                            <a href="#" class="btn">Event Details</a>
-                                            <a href="#" class="btn" style="margin-left: 15px; background-color: transparent; border-color: var(--secondary); color: var(--secondary);">Apply to Participate</a>
+                                            <a id="contactButton3" class="btn" style="margin-left: 15px;">Apply to Participate</a>
                                         </div>
                                     </div>
+
                                 </div>
-                                
                                 <div class="card">
-                                    <div class="card-img">
-                                        <img src="https://source.unsplash.com/random/800x500/?mic,performance,night" alt="Open Mic">
-                                    </div>
                                     <div class="card-content">
-                                        <h3>Open Mic Night</h3>
-                                        <p><strong>Date:</strong> September 15, 2023</p>
-                                        <p><strong>Time:</strong> 6:00 PM - 10:00 PM</p>
-                                        <p><strong>Location:</strong> The Teen Arts Center</p>
-                                        <p>Our monthly showcase for emerging performers returns with:</p>
-                                        <ul style="margin: 15px 0 15px 20px;">
-                                            <li>5-minute slots for musicians, poets, comedians, and more</li>
-                                            <li>Professional sound and lighting</li>
-                                            <li>Friendly, supportive audience</li>
-                                            <li>Feedback from experienced performers</li>
-                                        </ul>
-                                        <p>Sign-up begins at 5:30 PM (first come, first served). All experience levels welcome!</p>
-                                        <div style="margin-top: 25px;">
-                                            <a href="#" class="btn">Event Details</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <div class="card">
-                                    <div class="card-img">
-                                        <img src="https://source.unsplash.com/random/800x500/?art,exhibition,gallery" alt="Art Show">
-                                    </div>
-                                    <div class="card-content">
-                                        <h3>Fall Art Showcase</h3>
-                                        <p><strong>Date:</strong> October 21, 2023</p>
-                                        <p><strong>Time:</strong> 2:00 PM - 7:00 PM</p>
-                                        <p><strong>Location:</strong> Columbus Arts Center</p>
-                                        <p>Our annual exhibition featuring works from talented young artists across central Ohio:</p>
-                                        <ul style="margin: 15px 0 15px 20px;">
-                                            <li>Curated gallery exhibition</li>
-                                            <li>Artist talks and demonstrations</li>
-                                            <li>Live painting competition</li>
-                                            <li>Art supply swap</li>
-                                        </ul>
-                                        <p>Applications open August 1 - September 15. All mediums welcome!</p>
-                                        <div style="margin-top: 25px;">
-                                            <a href="#" class="btn">Event Details</a>
-                                            <a href="#" class="btn" style="margin-left: 15px; background-color: transparent; border-color: var(--secondary); color: var(--secondary);">Artist Info</a>
-                                        </div>
-                                    </div>
+                                        <img src="images/upcoming_nomad_poster.jpg" alt="upcoming_nomad_poster" style="display:block; margin:auto; margin-top:30px; max-width:360px; max-height:480px;">
+                                    </div>  
                                 </div>
                             </div>
+
+                                
                         </section>
-                        
+
                         <section class="container" style="background-color: #f9f9f9; padding: 80px 30px;">
                             <div class="section-title">
                                 <h2>Event Calendar</h2>
                                 <p>Plan your visit to upcoming Nomad events</p>
                             </div>
                             
-                            <table class="calendar">
-                                <thead>
-                                    <tr>
-                                        <th>Sun</th>
-                                        <th>Mon</th>
-                                        <th>Tue</th>
-                                        <th>Wed</th>
-                                        <th>Thu</th>
-                                        <th>Fri</th>
-                                        <th>Sat</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td>1</td>
-                                        <td>2</td>
-                                        <td>3</td>
-                                        <td>4</td>
-                                    </tr>
-                                    <tr>
-                                        <td>5</td>
-                                        <td>6</td>
-                                        <td>7</td>
-                                        <td>8</td>
-                                        <td>9</td>
-                                        <td class="event-day">10<br><small>Summer Fest</small></td>
-                                        <td class="event-day">11<br><small>Summer Fest</small></td>
-                                    </tr>
-                                    <tr>
-                                        <td>12</td>
-                                        <td>13</td>
-                                        <td>14</td>
-                                        <td>15</td>
-                                        <td>16</td>
-                                        <td>17</td>
-                                        <td>18</td>
-                                    </tr>
-                                    <tr>
-                                        <td>19</td>
-                                        <td>20</td>
-                                        <td>21</td>
-                                        <td>22</td>
-                                        <td>23</td>
-                                        <td>24</td>
-                                        <td>25</td>
-                                    </tr>
-                                    <tr>
-                                        <td>26</td>
-                                        <td>27</td>
-                                        <td>28</td>
-                                        <td>29</td>
-                                        <td>30</td>
-                                        <td>31</td>
-                                        <td></td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                            <!-- Google Calendar Embed -->
+                            <div class="google-calendar-container" style="position: relative; padding-bottom: 75%; height: 0; overflow: hidden;">
+                                <iframe 
+                                    src="https://calendar.google.com/calendar/embed?src=17526d6a3005032b1928a9a287b8a0e939208d3a1eee05bfe506640b8f924e39%40group.calendar.google.com&ctz=UTC" 
+                                    style="border-width:0; position: absolute; top: 0; left: 0; width: 100%; height: 100%;" 
+                                    frameborder="0" 
+                                    scrolling="no">
+                                </iframe>
+                            </div>
                             
                             <div style="text-align: center; margin-top: 40px;">
-                                <a href="#" class="btn">Download Full Calendar</a>
+                                <a href="https://calendar.google.com/calendar/embed?src=17526d6a3005032b1928a9a287b8a0e939208d3a1eee05bfe506640b8f924e39%40group.calendar.google.com&ctz=UTC" target="_blank" class="btn">Open Calendar in New Tab</a>
                             </div>
                         </section>
-                        
+
                         <section class="container">
                             <div class="section-title">
                                 <h2>Past Events</h2>
-                                <p>Relive the magic of previous Nomad gatherings</p>
+                                <p>Relive our previous gatherings</p>
                             </div>
                             
-                            <div class="card-grid">
-                                <div class="card">
-                                    <div class="card-img">
-                                        <img src="https://source.unsplash.com/random/800x500/?concert,spring,teen" alt="Spring Fest">
-                                    </div>
-                                    <div class="card-content">
-                                        <h3>Spring Fest 2023</h3>
-                                        <p><strong>Date:</strong> April 22, 2023</p>
-                                        <p><strong>Attendance:</strong> 850+</p>
-                                        <p>Our biggest single-day event yet featured:</p>
-                                        <ul style="margin: 15px 0 15px 20px;">
-                                            <li>12 musical acts</li>
-                                            <li>35 visual artists</li>
-                                            <li>40 teen vendors</li>
-                                            <li>Interactive mural project</li>
-                                        </ul>
-                                        <div style="margin-top: 25px;">
-                                            <a href="#" class="btn">View Photos</a>
-                                            <a href="#" class="btn" style="margin-left: 15px; background-color: transparent; border-color: var(--secondary); color: var(--secondary);">Watch Performances</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <div class="card">
-                                    <div class="card-img">
-                                        <img src="https://source.unsplash.com/random/800x500/?art,exhibition,winter" alt="Winter Showcase">
-                                    </div>
-                                    <div class="card-content">
-                                        <h3>Winter Art Showcase 2022</h3>
-                                        <p><strong>Date:</strong> December 10, 2022</p>
-                                        <p><strong>Attendance:</strong> 600+</p>
-                                        <p>A cozy celebration of winter creativity featuring:</p>
-                                        <ul style="margin: 15px 0 15px 20px;">
-                                            <li>Holiday-themed art market</li>
-                                            <li>Live ice sculpting</li>
-                                            <li>Acoustic performances</li>
-                                            <li>Community art project</li>
-                                        </ul>
-                                        <div style="margin-top: 25px;">
-                                            <a href="#" class="btn">View Photos</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <div class="card">
-                                    <div class="card-img">
-                                        <img src="https://source.unsplash.com/random/800x500/?music,festival,fall" alt="Fall Fest">
-                                    </div>
-                                    <div class="card-content">
-                                        <h3>Fall Fest 2022</h3>
-                                        <p><strong>Date:</strong> October 15, 2022</p>
-                                        <p><strong>Attendance:</strong> 700+</p>
-                                        <p>Our first outdoor festival featured:</p>
-                                        <ul style="margin: 15px 0 15px 20px;">
-                                            <li>Two performance stages</li>
-                                            <li>Pumpkin painting station</li>
-                                            <li>Artist alley</li>
-                                            <li>Food trucks</li>
-                                        </ul>
-                                        <div style="margin-top: 25px;">
-                                            <a href="#" class="btn">View Photos</a>
-                                            <a href="#" class="btn" style="margin-left: 15px; background-color: transparent; border-color: var(--secondary); color: var(--secondary);">Watch Performances</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div style="text-align: center; margin-top: 50px;">
-                                <a href="https://photos.nomadartcolumbus.com" target="_blank" class="btn">Browse Full Photo Archive</a>
+                            <div style="text-align: center; margin: 50px 0;">
+                                <a href="https://drive.google.com/drive/folders/1ssw8v5HgoeXblv3g_iqcwTRhd-E4t7E-" target="_blank" class="btn">View Past Event Photos & Videos</a>
                             </div>
                         </section>
                     `;
+                    setupEventButtons();
+                    setupFooterButtons();
                     break;
                     
                 case 'contact':
@@ -1346,30 +1171,10 @@
                             
                             <div class="contact-container">
                                 <div class="contact-form">
-                                    <h3>Send Us a Message</h3>
-                                    <form>
-                                        <div class="form-group">
-                                            <label for="name">Your Name</label>
-                                            <input type="text" id="name" required>
-                                        </div>
-                                        
-                                        <div class="form-group">
-                                            <label for="email">Your Email</label>
-                                            <input type="email" id="email" required>
-                                        </div>
-                                        
-                                        <div class="form-group">
-                                            <label for="subject">Subject</label>
-                                            <input type="text" id="subject">
-                                        </div>
-                                        
-                                        <div class="form-group">
-                                            <label for="message">Your Message</label>
-                                            <textarea id="message" required></textarea>
-                                        </div>
-                                        
-                                        <button type="submit" class="btn">Send Message</button>
-                                    </form>
+                                    <iframe
+                                        src="https://docs.google.com/forms/d/e/1FAIpQLScTQEvXQGLgVq4nbuaHJjoR5DrB5BRbgITaDy6a-vD4ZxqssA/viewform?embedded=true"
+                                        allowfullscreen
+                                    ></iframe>
                                 </div>
                                 
                                 <div class="contact-info">
@@ -1389,14 +1194,6 @@
                                             <div class="info-item-content">
                                                 <h4>Phone</h4>
                                                 <p>(614) 555-7890</p>
-                                            </div>
-                                        </div>
-                                        
-                                        <div class="info-item">
-                                            <i class="fas fa-map-marker-alt"></i>
-                                            <div class="info-item-content">
-                                                <h4>Mailing Address</h4>
-                                                <p>Nomad Art Columbus<br>123 Creative Lane<br>Columbus, OH 43201</p>
                                             </div>
                                         </div>
                                         
@@ -1448,37 +1245,6 @@
                             </div>
                         </section>
                         
-                        <section class="container" style="background-color: #f9f9f9; padding: 80px 30px;">
-                            <div class="section-title">
-                                <h2>Visit Us</h2>
-                                <p>Find our next event location</p>
-                            </div>
-                            
-                            <div class="about-content">
-                                <div class="about-text">
-                                    <h3>Event Locations</h3>
-                                    <p>Nomad events rotate between various venues across Columbus to make them accessible to different communities. Our regular locations include:</p>
-                                    
-                                    <ul style="margin: 20px 0 20px 20px;">
-                                        <li><strong>Columbus Commons:</strong> 160 S High St, Columbus, OH 43215</li>
-                                        <li><strong>The Teen Arts Center:</strong> 245 E Main St, Columbus, OH 43215</li>
-                                        <li><strong>Columbus Arts Center:</strong> 139 W Main St, Columbus, OH 43215</li>
-                                        <li><strong>Franklinton Arts District:</strong> Various locations</li>
-                                    </ul>
-                                    
-                                    <p>All our venues are wheelchair accessible and located near public transportation. Specific accessibility information for each event is available upon request.</p>
-                                    
-                                    <div style="margin-top: 30px;">
-                                        <a href="#events" class="btn">View Upcoming Events</a>
-                                    </div>
-                                </div>
-                                
-                                <div class="about-image">
-                                    <img src="https://source.unsplash.com/random/1000x600/?map,columbus,ohio" alt="Columbus map">
-                                </div>
-                            </div>
-                        </section>
-                        
                         <section class="container">
                             <div class="section-title">
                                 <h2>Frequently Asked Questions</h2>
@@ -1511,6 +1277,7 @@
                             </div>
                         </section>
                     `;
+                    setupFooterButtons();
                     break;
             }
             
